@@ -2,6 +2,7 @@ import React from 'react';
 import { Icon, Message, Segment } from 'semantic-ui-react';
 
 import PdfViewer from './PdfViewer';
+import './DocumentViewer.scss';
 
 const renderFile = file => {
   const { type } = file;
@@ -20,7 +21,9 @@ const renderFile = file => {
 };
 
 const DocumentViewer = ({ file }) => (
-  <Segment className="DocumentViewer">{renderFile(file)}</Segment>
+  <Segment basic className="DocumentViewer">
+    {renderFile(file)}
+  </Segment>
 );
 
 export default DocumentViewer;
