@@ -1,6 +1,12 @@
 import React from 'react';
 import { useStoreState, useStoreActions } from 'easy-peasy';
-import { Button, Icon, Menu } from 'semantic-ui-react';
+import {
+  Button,
+  Icon,
+  Menu,
+  Header as UIHeader,
+  Popup,
+} from 'semantic-ui-react';
 
 import Profile from '~/components/Profile';
 import PagesMenu from '~/components/Page/PagesMenu';
@@ -11,17 +17,32 @@ const Header = () => {
   const annotations = useStoreState(s => s.annotations.current);
   const { clear } = useStoreActions(s => s.document);
   const toggleImporter = useStoreActions(s => s.ui.importer.toggle);
+  const overflow = file?.name.length > 40;
+  const fileName = overflow ? `${file?.name.slice(0, 40)}...` : file?.name;
+  const renderedFilename = (
+    <UIHeader className="Header__filename">{fileName}</UIHeader>
+  );
 
   return (
-    <Menu>
+    <Menu className="Header">
       <Menu.Item header>Annotate &amp; chill</Menu.Item>
       {file?.name && (
         <>
           <Menu.Item>
-            <Icon name="pdf file" />
+            {overflow ? (
+              <Popup
+                content={file.name}
+                trigger={renderedFilename}
+                position="bottom center"
+              />
+            ) : (
+              renderedFilename
+            )}
+          </Menu.Item>
+          <Menu.Item>
             <Button icon labelPosition="right" onClick={clear}>
-              {file.name}
-              <Icon name="close" />
+              New
+              <Icon name="pdf file" />
             </Button>
           </Menu.Item>
           <Menu.Item>
