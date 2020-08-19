@@ -17,7 +17,7 @@ const PdfPageLoader = () => {
     >
       <Header icon>
         <Icon name="paint brush" loading />
-        Rendering pages
+        {`Rendering ${pagesNum} pages`}
       </Header>
       <Modal.Content>
         <Progress
