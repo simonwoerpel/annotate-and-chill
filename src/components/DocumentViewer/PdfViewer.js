@@ -5,6 +5,7 @@ import { Document, Page } from 'react-pdf/dist/entry.webpack';
 import { Rail } from 'semantic-ui-react';
 // import { Waypoint } from 'react-waypoint';
 import { Loader } from '~/components/common';
+import PdfPageLoader from '~/components/DocumentLoader/PdfPageLoader';
 import Annotations from '~/components/Annotations';
 import AnnotationLocation from '~/components/Annotations/AnnotationLocation';
 
@@ -136,6 +137,7 @@ const PdfViewer = ({ options, file }) => {
           );
         })}
       </Document>
+      <PdfPageLoader />
     </div>
   );
 };

@@ -1,7 +1,6 @@
 import React from 'react';
-import { Segment } from 'semantic-ui-react';
+import { Icon, Message, Segment } from 'semantic-ui-react';
 
-import PdfPageLoader from '../DocumentLoader/PdfPageLoader';
 import PdfViewer from './PdfViewer';
 
 const renderFile = file => {
@@ -9,14 +8,19 @@ const renderFile = file => {
   if (type === 'application/pdf') {
     return <PdfViewer file={file} />;
   }
-  return <p>unsupported format: {type}</p>;
+  return (
+    <Message negative icon>
+      <Icon name="warning" />
+      <Message.Content>
+        <Message.Header>Unsupported file format: {type}</Message.Header>
+        <p>Sorry, currently only PDF is supported.</p>
+      </Message.Content>
+    </Message>
+  );
 };
 
 const DocumentViewer = ({ file }) => (
-  <>
-    <PdfPageLoader />
-    <Segment className="DocumentViewer">{renderFile(file)}</Segment>
-  </>
+  <Segment className="DocumentViewer">{renderFile(file)}</Segment>
 );
 
 export default DocumentViewer;
