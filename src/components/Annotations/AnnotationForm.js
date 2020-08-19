@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useStoreState, useStoreActions } from 'easy-peasy';
 import { Button, Form, Segment, TextArea } from 'semantic-ui-react';
 
-import './AnnotationForm.scss'
+import './AnnotationForm.scss';
 
 const AnnotationForm = () => {
   const { createAnnotation } = useStoreActions(s => s.annotations);
@@ -30,8 +30,12 @@ const AnnotationForm = () => {
         onClick={() => annotationForm.toggle(false) && draw.clearCanvas()}
       />
       <Form className="AnnotationForm__form">
-        <TextArea value={value} onChange={e => setValue(e.target.value)} />
-        <Button className="AnnotationForm__button" primary onClick={onSubmit}>
+        <TextArea
+          autoFocus
+          value={value}
+          onChange={e => setValue(e.target.value)}
+        />
+        <Button fluid primary onClick={onSubmit}>
           Save
         </Button>
       </Form>
