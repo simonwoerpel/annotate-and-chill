@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { useStoreActions, useStoreState } from 'easy-peasy';
+import tinycolor from 'tinycolor2';
 import { Modal, Button, Form } from 'semantic-ui-react';
 import { CirclePicker } from 'react-color';
+import { formatRgba } from '~/util';
 
-const ProfileForm = ({ data, updateData }) => {
+const ProfileForm = ({ data, updateData, colors }) => {
   const { firstName, lastName, email, color } = data;
 
   return (
@@ -38,6 +40,7 @@ const ProfileForm = ({ data, updateData }) => {
       <Form.Field>
         <label htmlFor="color">Choose your color</label>
         <CirclePicker
+          colors={colors}
           color={color}
           onChange={({ rgb }) => updateData({ ...data, color: rgb })}
         />
@@ -76,10 +79,11 @@ const Profile = () => {
   const {
     exists,
     name,
+    color,
+    colors,
     firstName = '',
     lastName = '',
     email = '',
-    color = '',
   } = useStoreState(s => s.user);
   const [showForm, toggleForm] = useState(!exists);
   const update = useStoreActions(s => s.user.update);
@@ -91,7 +95,23 @@ const Profile = () => {
       {exists && (
         <p>
           Hi {name}{' '}
-          <Button circular icon="wrench" onClick={() => toggleForm(true)} />
+          <Button
+            circular
+            icon="wrench"
+            style={{
+              backgroundColor: formatRgba(color),
+              color: tinycolor
+                .mostReadable(color, [
+                  'grey',
+                  'darkgrey',
+                  'lightgrey',
+                  'white',
+                  'black',
+                ])
+                .toHexString(),
+            }}
+            onClick={() => toggleForm(true)}
+          />
         </p>
       )}
       <ProfileModal
@@ -99,7 +119,7 @@ const Profile = () => {
         setOpen={toggleForm}
         onSubmit={() => onSubmit(data)}
       >
-        <ProfileForm data={data} updateData={updateData} />
+        <ProfileForm data={data} updateData={updateData} colors={colors} />
       </ProfileModal>
     </div>
   );
