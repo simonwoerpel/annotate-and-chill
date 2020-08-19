@@ -1,0 +1,8 @@
+.AnnotationForm {
+  &__close-button {
+    position: absolute;
+    right: -1em;
+    top: -1em;
+    z-index: 100;
+  }
+}
