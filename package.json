@@ -14,7 +14,7 @@
     "url": "git@github.com:simonwoerpel/annotate-and-chill.git",
     "type": "git"
   },
-  "homepage": "https://simonwoerpel.github.io/annotate-and-chill",
+  "homepage": "https://demo.annotate.cool",
   "author": "Simon Wörpel",
   "license": "MIT",
   "devDependencies": {
