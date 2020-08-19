@@ -7,7 +7,7 @@ const DocumentModel = {
   pagesNum: 1,
   renderedPages: 0,
   renderPagesComplete: computed(
-    ({ renderedPages, pagesNum }) => renderedPages === pagesNum
+    ({ renderedPages, pagesNum }) => renderedPages >= pagesNum
   ),
   error: null,
   isLoading: false,
