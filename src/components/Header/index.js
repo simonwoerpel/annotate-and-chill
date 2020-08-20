@@ -9,7 +9,7 @@ import {
 } from 'semantic-ui-react';
 
 import Profile from '~/components/Profile';
-import PagesMenu from '~/components/Page/PagesMenu';
+// import PagesMenu from '~/components/Page/PagesMenu';
 import CsvExporter from '~/components/Annotations/CsvExporter';
 
 const Header = () => {
@@ -59,7 +59,7 @@ const Header = () => {
         <Menu.Item>
           <Profile />
         </Menu.Item>
-        <PagesMenu />
+        { /* <PagesMenu /> */ }
       </Menu.Menu>
     </Menu>
   );

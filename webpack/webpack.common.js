@@ -75,22 +75,22 @@ module.exports = {
       //   test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,
       //   loader: 'file-loader',
       // },
-      // {
-      //   test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
-      //   loader: 'url-loader?limit=10000&mimetype=image/svg+xml',
-      // },
       {
-        test: /\.svg$/,
-        use: [
-          'babel-loader',
-          {
-            loader: 'react-svg-loader',
-            options: {
-              jsx: true,
-            },
-          },
-        ],
+        test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'url-loader?limit=10000&mimetype=image/svg+xml',
       },
+      // {
+      //   test: /\.svg$/,
+      //   use: [
+      //     'babel-loader',
+      //     {
+      //       loader: 'react-svg-loader',
+      //       options: {
+      //         jsx: true,
+      //       },
+      //     },
+      //   ],
+      // },
       {
         test: /\.(js|jsx)$/,
         include: [
