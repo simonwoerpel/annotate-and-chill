@@ -9,7 +9,7 @@ import {
 } from 'semantic-ui-react';
 
 import Profile from '~/components/Profile';
-// import PagesMenu from '~/components/Page/PagesMenu';
+import Documentation from '~/components/Documentation';
 import CsvExporter from '~/components/Annotations/CsvExporter';
 
 const Header = () => {
@@ -25,7 +25,9 @@ const Header = () => {
 
   return (
     <Menu className="Header">
-      <Menu.Item header>Annotate &amp; chill</Menu.Item>
+      <Menu.Item>
+        <Documentation />
+      </Menu.Item>
       {file?.name && (
         <>
           <Menu.Item>
@@ -59,7 +61,6 @@ const Header = () => {
         <Menu.Item>
           <Profile />
         </Menu.Item>
-        { /* <PagesMenu /> */ }
       </Menu.Menu>
     </Menu>
   );
